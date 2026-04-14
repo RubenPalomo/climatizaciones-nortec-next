@@ -1,5 +1,6 @@
 import { MapPin, Clock3, PhoneCall, Menu } from "lucide-react";
 import Image from "next/image";
+import logo from "@/public/logo.png";
 
 export default function SiteHeader() {
   return (
@@ -37,7 +38,7 @@ export default function SiteHeader() {
         >
           <Image
             className="brand-logo"
-            src="/logo.png"
+            src={logo}
             alt="Nortec Logo"
             width={184}
             height={54}
