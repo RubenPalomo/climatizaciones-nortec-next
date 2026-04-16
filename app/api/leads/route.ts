@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getMongoCollectionName, getMongoDb } from "@/lib/mongodb";
+import { sendToTelegram } from "@/lib/sendToTelegram";
 
 export const runtime = "nodejs";
 
@@ -63,6 +64,17 @@ export async function POST(request: Request) {
       source: "web",
       userAgent: request.headers.get("user-agent") ?? null,
     });
+
+    const sentToTelegram = await sendToTelegram({
+      name,
+      email,
+      phone,
+      service,
+      consulta: consulta || null,
+    });
+    if (!sentToTelegram) {
+      console.warn("Lead guardado en MongoDB pero no se pudo enviar a Telegram.");
+    }
 
     return NextResponse.json({
       success: true,
