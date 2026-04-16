@@ -82,8 +82,7 @@ export default function LeadForm() {
             detail: {
               type: "error",
               message:
-                data?.error ??
-                "No se pudo guardar el lead. Inténtalo de nuevo.",
+                data?.error ?? `No se pudo guardar (HTTP ${response.status}).`,
             },
           }),
         );

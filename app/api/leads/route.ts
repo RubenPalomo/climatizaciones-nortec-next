@@ -73,7 +73,9 @@ export async function POST(request: Request) {
       consulta: consulta || null,
     });
     if (!sentToTelegram) {
-      console.warn("Lead guardado en MongoDB pero no se pudo enviar a Telegram.");
+      console.warn(
+        "Lead guardado en MongoDB pero no se pudo enviar a Telegram.",
+      );
     }
 
     return NextResponse.json({
